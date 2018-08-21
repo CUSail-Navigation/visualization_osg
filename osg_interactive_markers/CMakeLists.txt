@@ -25,7 +25,7 @@ DEPENDS
 FIND_PACKAGE ( OpenSceneGraph COMPONENTS osgSim osgUtil osgDB osgFX osgGA osgTerrain osgViewer osgText osgWidget osgManipulator osg)
 
 #link_directories(${VISP_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS})
-include_directories(include ${catkin_INCLUDE_DIRS} ${OSGMARKERS_INCLUDE_DIRS} ${OSGUTILS_INCLUDE_DIRS})
+include_directories(include ${osg_markers_INCLUDE_DIRS} ${osg_utils_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${OSGMARKERS_INCLUDE_DIRS} ${OSGUTILS_INCLUDE_DIRS})
 add_library(${PROJECT_NAME}
   src/interactive_marker_client.cpp
   src/interactive_marker_display.cpp
@@ -37,7 +37,7 @@ add_library(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${OPENSCENEGRAPH_LIBRARIES} ${OSGUTILS_LIBRARIES} ${OSGMARKERS_LIBRARIES} -lGLU )
 
 add_executable(osg_interactive_markers_demo examples/osg_interactive_markers_demo.cpp)
-target_link_libraries(osg_interactive_markers_demo ${PROJECT_NAME} ${catkin_LIBRARIES} ${OPENSCENEGRAPH_LIBRARIES} ${OSGUTILS_LIBRARIES} ${OSGMARKERS_LIBRARIES} -lGLU )
+target_link_libraries(osg_interactive_markers_demo ${PROJECT_NAME} ${catkin_LIBRARIES} ${OPENSCENEGRAPH_LIBRARIES} ${osg_markers_LIBRARIES} ${osg_utils_LIBRARIES} ${OSGUTILS_LIBRARIES} ${OSGMARKERS_LIBRARIES} -lGLU )
 
 add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 
